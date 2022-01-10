@@ -86,7 +86,7 @@ public class StoredLtrQueryBuilder extends AbstractQueryBuilder<StoredLtrQueryBu
         modelName = input.readOptionalString();
         featureSetName = input.readOptionalString();
         params = input.readMap();
-        if (input.getVersion().onOrAfter(Version.V_6_2_4)) {
+        if (input.getVersion().onOrAfter(Version.V_7_0_0)) {
             String[] activeFeat = input.readOptionalStringArray();
             activeFeatures = activeFeat == null ? null : Arrays.asList(activeFeat);
         }
@@ -116,7 +116,7 @@ public class StoredLtrQueryBuilder extends AbstractQueryBuilder<StoredLtrQueryBu
         out.writeOptionalString(modelName);
         out.writeOptionalString(featureSetName);
         out.writeMap(params);
-        if (out.getVersion().onOrAfter(Version.V_6_2_4)) {
+        if (out.getVersion().onOrAfter(Version.V_7_0_0)) {
             out.writeOptionalStringArray(activeFeatures != null ? activeFeatures.toArray(new String[0]) : null);
         }
         out.writeOptionalString(storeName);
